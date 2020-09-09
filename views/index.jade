@@ -1,6 +1,7 @@
 extends layout
 
 block content
+  script(src="/javascripts/charts.js")
   header
     h1= title
   hr
@@ -14,6 +15,6 @@ block content
           canvas(id="perth-chart" width="400" height="400")
         div(class="col-sm")
           canvas(id="melb-chart" width="400" height="400")
-  script.
-    chart("perth-chart");
-    chart("melb-chart")
+  - var y = data;
+  - var perth = chart("perth-chart", y);
+  - var melb chart("melb-chart", y);

@@ -6,6 +6,8 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 
+const Processor = require('./process');
+
 var app = express();
 
 // view engine setup
@@ -35,5 +37,9 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+var processor = new Processor('covid_data.csv');
+processor.readCSV();
+console.log(processor.getAsJSON());
 
 module.exports = app;
